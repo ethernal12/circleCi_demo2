@@ -1,6 +1,7 @@
 var assert = require('assert');
 
 const sum = require("../sum.js");
+const mul = require("../sum.js");
 
 
 describe('testing sum function', () => { 
@@ -10,7 +11,10 @@ describe('testing sum function', () => {
 
         assert.equal(sum(1,2),3);
     });
+    it("Should multiply two numbers", () => {
+
+        assert.equal(mul(2,2),4);
+    });
    
-    
 
  })
