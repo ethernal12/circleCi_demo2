@@ -15,10 +15,7 @@ describe('testing sum function', () => {
 
         assert.equal(mul(2,2),4);
     });
-    it("Should NOT multiply two numbers", () => {
-
-        assert.equal(mul(2,2),5);
-    });
+  
     
    
 
