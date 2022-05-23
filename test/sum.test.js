@@ -14,6 +14,10 @@ describe('testing sum function', () => {
 
         assert.equal(sum(1,2),4);
     });
+    it("Should NOT add two numbers too", () => {
+
+        assert.equal(sum(1,2),5);
+    });
     
 
  })
