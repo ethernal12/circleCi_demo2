@@ -1,5 +1,5 @@
 function sum (a,b) {
-    return a+ b;
+    return a + b +20;
 }
 function mul (a,b) {
     return a * b;
