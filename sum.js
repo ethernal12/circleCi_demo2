@@ -8,4 +8,9 @@ function sub (a,b) {
     return a - b;
 }
 
-module.exports = sum , mul;
+module.exports = {
+
+    sum: sum,
+    mul: mul,
+    sub : sub
+}
