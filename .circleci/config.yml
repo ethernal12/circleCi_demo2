@@ -9,8 +9,9 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: npm test
-          name: Run tests
+          name: install npm dependecies
+          command: |
+            npm install --save
 workflows:
   build_test:
     jobs:
