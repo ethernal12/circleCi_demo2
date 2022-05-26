@@ -17,11 +17,11 @@ jobs:
       - run:
          name: Save test results
          command: |
-           mkdir -p ~/test/
+           mkdir test
             
       
       - store_test_results:
-          path: ~/test/
+          path: test
 
 workflows:
   build_test:
