@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Run Unit Tests
           command: npm test |
-            --reporter mochawesome --reporter-options reportDir=test-results,reportFilename=test-results
+            reportDir=test-results,reportFilename=test-results
      
 
 workflows:
