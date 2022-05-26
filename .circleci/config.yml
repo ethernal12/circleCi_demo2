@@ -3,16 +3,15 @@ orbs:
   node: circleci/node@5.0.2
 jobs:
   run_tests:
-   
-    
-    executor: node/default
+    docker:
+      - image: circleci/node:10
     steps:
       - checkout 
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: npm test
-          name: Run tests
+          command: \
+            ./node_modules/mocha/bin/mocha test/ --reporter mochawesome --reporter-options reportDir=test-results,reportFilename=test-results
       
 
 workflows:
