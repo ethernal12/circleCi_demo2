@@ -12,7 +12,12 @@ jobs:
             npm install --save
       - run:
           name: Run Unit Tests
-          command: npm test --reporter mochawesome
+          command: npm test 
+      - run: 
+          name: Report mochawesome
+          command: |
+            --reporter mochawesome
+
 workflows:
   build_test:
     jobs:
