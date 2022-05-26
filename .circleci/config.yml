@@ -12,7 +12,7 @@ jobs:
             npm install --save
       - run:
           name: Run Unit Tests
-          command: \
+          command: |
             ./node_modules/mocha/bin/mocha test/ 
 workflows:
   build_test:
