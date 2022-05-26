@@ -3,9 +3,9 @@ orbs:
   node: circleci/node@5.0.2
 jobs:
   run_tests:
+   
     
-    docker:
-      - image: circleci/node:10
+    executor: node/default
     steps:
       - checkout 
       - node/install-packages:
@@ -13,10 +13,7 @@ jobs:
       - run:
           command: npm test
           name: Run tests
-      - store_test_results:
-         path: test-results
-      - store_artifacts:
-          path: test-results
+      
 
 workflows:
   build_test:
