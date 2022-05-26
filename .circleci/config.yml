@@ -13,13 +13,9 @@ jobs:
       - run:
           name: Run Unit Tests
           command: npm test 
-      - run:
-         name: Save test results
-         command: |
-           mkdir -p ~/test-results/
+      
       - store_test_results:
-          path: ~/test-results/test-results.xml
-     
+          path: ./test/
 
 workflows:
   build_test:
