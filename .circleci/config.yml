@@ -1,29 +1,26 @@
 version: 2.1
+orbs:
+  node: circleci/node@5.0.2
+ 
 
 jobs:
-  run_tests:
-    docker:
-      - image: cimg/node:16.15.0
+  build_and_test:
+    executor: node/default
     steps:
       - checkout 
       - restore_cache:
               key: npm-cache-v1-{{ checksum "package.json" }}
-      - run:
-          name: install npm dependecies
-          command: |
-            npm install --save
+      - node/install-packages:
+          pkg-manager: npm
       - save_cache:
               key: npm-cache-v1-{{ checksum "package.json" }}
               paths:
                 - node_modules
       - run:
-          name: Run Unit Tests
-          command: | 
-            npm test 
-      - store_test_results:
-          path: ./test
-
+          command: npm test
+          name: Run tests
+ 
 workflows:
-  build_test:
+  test_my_app:
     jobs:
-      - run_tests
+      - build_and_test

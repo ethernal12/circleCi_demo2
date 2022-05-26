@@ -8,8 +8,14 @@ jobs:
     executor: node/default
     steps:
       - checkout 
+      - restore_cache:
+              key: npm-cache-v1-{{ checksum "package.json" }}
       - node/install-packages:
           pkg-manager: npm
+      - save_cache:
+              key: npm-cache-v1-{{ checksum "package.json" }}
+              paths:
+                - node_modules
       - run:
           command: npm test
           name: Run tests
