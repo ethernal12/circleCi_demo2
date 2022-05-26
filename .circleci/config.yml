@@ -6,8 +6,6 @@ jobs:
       - image: cimg/node:15.0.1
     steps:
       - checkout 
-      - node/install-packages:
-          pkg-manager: npm
       - run:
           name: install npm dependecies
           command: |
