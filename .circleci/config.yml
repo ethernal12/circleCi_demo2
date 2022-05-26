@@ -17,11 +17,12 @@ jobs:
               paths:
                 - node_modules
       - run:
-          name: Run Unit Tests
-          command: | 
-            npm test 
+              name: Run Tests
+              command: |
+                mkdir -p ~/test-results/junit
+                npm test --ci --reporters=mocha
       - store_test_results:
-          path: ./test
+          path: ~/test-results
 
 workflows:
   build_test:
