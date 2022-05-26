@@ -4,16 +4,14 @@ orbs:
 jobs:
   run_tests:
     docker:
-      - image: circleci/node:10
+      - image: cimg/node:15.0.1
     steps:
       - checkout 
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: \
-            ./node_modules/mocha/bin/mocha test/ --reporter mochawesome --reporter-options reportDir=test-results,reportFilename=test-results
-      
-
+          command: npm test
+          name: Run tests
 workflows:
   build_test:
     jobs:
