@@ -7,7 +7,10 @@ jobs:
       name: win/default
     steps:
       - checkout
-      - run: 'Write-Host ''Hello, Windows'''
+      - run:
+          name: install npm dependecies
+          command: |
+            npm install --save
 workflows:
   my-workflow:
     jobs:
