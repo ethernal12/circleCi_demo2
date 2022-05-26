@@ -10,8 +10,10 @@ jobs:
       - checkout 
       - restore_cache:
               key: npm-cache-v1-{{ checksum "package.json" }}
-      - node/install-packages:
-          pkg-manager: npm
+      - run:
+          name: install npm dependecies
+          command: |
+            npm install --save
       - save_cache:
               key: npm-cache-v1-{{ checksum "package.json" }}
               paths:
