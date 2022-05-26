@@ -4,9 +4,9 @@ orbs:
  
 
 jobs:
-  build_and_test:
-    executor: 
-     name: win/default
+  build:
+    executor:
+      name: win/default
     steps:
       - checkout 
       - restore_cache:
@@ -28,4 +28,4 @@ jobs:
 workflows:
   test_my_app:
     jobs:
-      - build_and_test
+      - build
