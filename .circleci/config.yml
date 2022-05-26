@@ -1,26 +1,28 @@
 version: 2.1
+orbs: 
+  windows: circleci/windows@4.1.1
+ 
 
 jobs:
-  run_tests:
-    docker:
-      - image: cimg/node:16.15.0
+  build_and_test:
+    executor: win/default
     steps:
       - checkout 
-     
+      - restore_cache:
+              key: npm-cache-v1-{{ checksum "package.json" }}
+      - node/install-packages:
+          pkg-manager: npm
+      - save_cache:
+              key: npm-cache-v1-{{ checksum "package.json" }}
+              paths:
+                - node_modules
       - run:
-          name: install npm dependecies
-          command: |
-            npm install --save
-      - run: mkdir ~/junit
-      - run:
-          command: npm test --reporter test
-          environment:
-            MOCHA_FILE: ~/junit/test-results.xml
-          when: always
+          command: npm test
+          name: Run tests
       - store_test_results:
-          path: ~/junit
-
+          path: ./test
+ 
 workflows:
-  build_test:
+  test_my_app:
     jobs:
-      - run_tests
+      - build_and_test
