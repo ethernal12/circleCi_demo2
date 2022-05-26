@@ -15,7 +15,7 @@ jobs:
           command: npm test 
       
       - store_test_results:
-          path: ./test/
+          path: test
 
 workflows:
   build_test:
