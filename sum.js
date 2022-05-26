@@ -1,10 +1,10 @@
-function sum (a,b) {
-    return a + b ;
+function sum(a, b) {
+    return a + b;
 }
-function mul (a,b) {
+function mul(a, b) {
     return a * b;
 }
-function sub (a,b) {
+function sub(a, b) {
     return a - b;
 }
 
@@ -12,5 +12,5 @@ module.exports = {
 
     sum: sum,
     mul: mul,
-    sub : sub
+    sub: sub
 }
