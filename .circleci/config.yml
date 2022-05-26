@@ -1,22 +1,22 @@
 version: 2.1
+orbs:
+  node: circleci/node@5.0.2
 jobs:
   run_tests:
+    
     docker:
       - image: circleci/node:10
     steps:
-    - checkout
-    - run:
-        name: install npm dependecies
-        command: |
-          npm install --save
-    - run:
-        name: Run Unit Tests
-        command: \
-          ./node_modules/mocha/bin/mocha test/ --reporter mochawesome --reporter-options reportDir=test-results,reportFilename=test-results
-    - store_test_results:
-        path: test-results
-    - store_artifacts:
-        path: test-results
+      - checkout 
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          command: npm test
+          name: Run tests
+      - store_test_results:
+         path: test-results
+      - store_artifacts:
+          path: test-results
 
 workflows:
   build_test:
