@@ -11,17 +11,14 @@ jobs:
           name: install npm dependecies
           command: |
             npm install --save
+      - run: mkdir ~/junit
       - run:
-          name: Install JUnit coverage reporter
-          command: yarn add --dev jest-junit
-     
-      - run:
-          name: Run tests with JUnit as reporter
-          command: npm test --ci --runInBand --reporters=default --reporters=jest-junit
+          command: npm test --reporter mocha-junit-reporter
           environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+            MOCHA_FILE: ~/junit/test-results.xml
+          when: always
       - store_test_results:
-          path: ./reports/junit/
+          path: ~/junit
 
 workflows:
   build_test:
